@@ -36,14 +36,16 @@ body {
 	left: 50%;
 	transform: rotate(-90deg);
 	transform-origin: 2px 2px;
+	transition: 100ms;
+	transition-timing-function: cubic-bezier(0.1, 2.7, 0.6, 1);
 }
 
-.second {
+.second-hand {
 	height: 2px;
 	background-color: red;
-	transform-origin: 0px 0px;
+	transform-origin: 2px 0px;
 }
-.hour {
+.hour-hand {
 	width: 30%;
 }
 
