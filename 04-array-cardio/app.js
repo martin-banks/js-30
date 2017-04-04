@@ -59,6 +59,46 @@ console.table(sortedYearsLived)
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+const boulevards = [
+	`Boulevards of Paris`,
+	`City walls of Paris`,
+	`Thiers wall`,
+	`Wall of Charles V`,
+	`Wall of Philip II Augustus`,
+	`City gates of Paris`,
+	`Haussmann's renovation of Paris`,
+	`Boulevards of the Marshals`,
+	`Boulevard Auguste-Blanqui`,
+	`Boulevard Barbès`,
+	`Boulevard Beaumarchais`,
+	`Boulevard de l'Amiral-Bruix`,
+	`Boulevard des Capucines`,
+	`Boulevard de la Chapelle`,
+	`Boulevard de Clichy`,
+	`Boulevard du Crime`,
+	`Boulevard Haussmann`,
+	`Boulevard de l'Hôpital`,
+	`Boulevard des Italiens`,
+	`Boulevard de la Madeleine`,
+	`Boulevard de Magenta`,
+	`Boulevard Montmartre`,
+	`Boulevard du Montparnasse`,
+	`Boulevard Raspail`,
+	`Boulevard Richard-Lenoir`,
+	`Boulevard de Rochechouart`,
+	`Boulevard Saint-Germain`,
+	`Boulevard Saint-Michel`,
+	`Boulevard de Sébastopol`,
+	`Boulevard de Strasbourg`,
+	`Boulevard du Temple`,
+	`Boulevard Voltaire`,
+	`Boulevard de la Zone`
+]
+const boulevardDe = boulevards.filter(boulevard => {
+	return boulevard.split(' ').indexOf('de') !== -1 ? true : false
+})
+
+console.log(`6. boulevards with 'de' in them\n`, boulevardDe)
 
 
 // 7. sort Exercise
@@ -76,6 +116,11 @@ console.log('7. People sorted by surname\n', namesSorted)
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+const sumTotal = data.reduce( (result, entry)=>{
+	if(!result[entry]) result[entry] = 0
+	result[entry]++
+	return result
+},{})
 
 
 console.log('8. reduce sum total')
