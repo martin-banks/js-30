@@ -1,0 +1,59 @@
+
+:root * {
+	box-sizing: border-box;
+	font-family: "Tulpen One", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.panels {
+	display: flex;
+	height: 100%;
+}
+.panels * {
+	transition: 
+		flex 500ms cubic-bezier(0.61,-0.19, 0.7,-0.11),
+		font-size 300ms cubic-bezier(0.61,-0.19, 0.7,-0.11),
+		transform 300ms cubic-bezier(0.61,-0.19, 0.7,-0.11);
+}
+.panel {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	color: #fff;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+}
+
+.panel p {
+	/*border: solid 1px red;*/
+	flex: 1;
+	justify-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 32px;
+	text-transform: uppercase;
+}
+
+.panel p:first-child {
+	transform: translateY(-100%);
+}
+.panel p:last-child {
+	transform: translateY(100%);
+}
+
+.open {
+	/*border: solid 4px lime;*/
+	flex: 4;
+}
+.open > p {
+	font-size: 54px
+}
+.active p:first-child,
+.active p:last-child {
+	transform: translateY(0);
+}
