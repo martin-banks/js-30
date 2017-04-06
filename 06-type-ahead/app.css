@@ -1,44 +1,57 @@
 :root * {
 	font-family: sans-serif;
 }
+body {
+	background: linear-gradient(indigo, purple);
+}
 
 #app {
 	margin: 0 auto;
 	width: 80%;
+	max-width: 600px
 }
 .result {
-	padding: 8px;
-	border: solid 1px #ccc;
-	//margin-bottom: 8px;
+	padding: 16px 10%;
 	display: flex;
 }
 .result:nth-of-type(odd){
 	transform: 
 		perspective(100px)
-		translateY(4px)
+		translateY(1px)
 		rotateX(2deg);
-	background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.0));
+	background: linear-gradient(#e2e2e2, #fff);
 }
 .result:nth-of-type(even){
 	transform: 
 		perspective(100px)
-		translateY(4px)
+		translateY(2px)
 		rotateX(-2deg);
-	background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.05));
+	background: linear-gradient(#fff, #e2e2e2);
+
 }
 
-.result p {
-	margin: 0;
-	padding: 0;
-	flex: 1;
-}
-
-.result span:first-child {
+.result ul li:first-of-type {
 	text-transform: uppercase;
 	font-size: 8px;
 	vertical-align: middle;
+	border-bottom: solid 4px #000;
+	margin-bottom: 8px;
+	padding-bottom: 2px;
+	display: table;
 }
 
+.result ul {
+	margin: 0;
+	padding: 0;
+	display: block;
+	flex: 1;
+	list-style: none
+}
+
+/*.result span:first-child {
+	
+}*/
+
 .highlight {
-	background-color: yellow
+	background-color: gold
 }

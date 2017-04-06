@@ -12,15 +12,30 @@ function Input({}={}){
 	return { render }
 }
 
-const result = ({city='', state=''}={}) => `<div class="result">
-	<p class="state">
-		<span>STATE: </span>
-		${state}
-	</p>
-	<p class="city">
-		<span>CITY: </span>
-		${city}
-	</p>
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+
+const result = ({city='', state='', population=''}={}) => `<div class="result">
+	<ul>
+		<li>STATE: </li>
+		<li class="state">
+			${state}
+		</li>
+	</ul>
+	
+	<ul>
+		<li>CITY: </li>
+		<li class="city">
+			${city}
+		</li>
+	</ul>
+	<ul>
+		<li>Population:</li>
+		<li class="population">${numberWithCommas(population)}</li>
+	</ul>
+	
 </div>`
 
 
@@ -31,6 +46,7 @@ let App = `
 	<div class="resultContainer">
 		Loading...
 	</div>` 
+
 
 const highlight = ({text, index}) => `<span class="highlight">
 	${text.slice(0, index)}</span>${text.slice(index)}`
@@ -48,7 +64,7 @@ function renderResults(e){
 	let mappedCities = filteredCities.map(entry => {
 		let state = search === entry.state.slice(0, search.length).toUpperCase() ? highlight({text: entry.state, index: search.length}) : entry.state
 		let city = search === entry.city.slice(0, search.length).toUpperCase() ? highlight({text: entry.city, index: search.length}) : entry.city
-		return result({state, city})
+		return result({state, city, population:entry.population})
 	})
 	return mappedCities.join('')
 }
