@@ -28,7 +28,7 @@ function draw(e) {
 	ctx.lineTo(e.offsetX, e.offsetY)
 	ctx.stroke()
 
-	console.log(e.offsetX - lastX, e.offsetY - lastY)
+	//console.log(e.offsetX - lastX, e.offsetY - lastY)
 	let diffX = e.offsetX - lastX
 	let diffY = e.offsetY - lastY
 
