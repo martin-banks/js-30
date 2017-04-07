@@ -2,8 +2,14 @@
 
 const canvasTemplate = () => `<canvas 
 	id="draw"
-	width="${window.innerWidth}"
-	height="${window.innerHeight}"
+	width="${window.innerWidth * 2}"
+	height="${window.innerHeight * 2}"
+	style="
+		transform: scale(0.5)
+		top: 0;
+		left: 0;
+		position: absolute;
+	"
 ></canvas>`
 document.querySelector('#app').innerHTML = canvasTemplate()
 
@@ -54,4 +60,4 @@ canvas.addEventListener('mousedown', e => {
 	//[lastX, lastY] = [e.offsetX, e.offsetY]
 })
 canvas.addEventListener('mouseup', stopDraw)
-canvas.addEventListener('mouseout', stopDraw)
+// canvas.addEventListener('mouseout', stopDraw)
