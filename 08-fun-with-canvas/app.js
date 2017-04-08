@@ -40,9 +40,9 @@ function draw(e) {
 
 	let updateSize = ((Math.sqrt(Math.pow(diffX, 2))) + (Math.sqrt(Math.pow(diffY, 2))))
 	ctx.lineWidth = updateSize
-	// [lastX, lastY] = [e.offsetX, e.offsetY]
-	lastX = e.offsetX
-	lastY = e.offsetY
+	// when destructuring through arrays, 
+	// it MUST be separated by a semin-colon
+	;[lastX, lastY] = [e.offsetX, e.offsetY]
 	color++
 	ctx.strokeStyle = `hsla(${color}, 50%, 50%, ${opacity})`
 }
@@ -54,10 +54,7 @@ function stopDraw() {
 canvas.addEventListener('mousemove', draw)
 canvas.addEventListener('mousedown', e => {
 	isDrawing = true
-	// [lastX, lastY] = [e.offsetX, e.offsetY]
-	lastX = e.offsetX
-	lastY = e.offsetY
-	//[lastX, lastY] = [e.offsetX, e.offsetY]
+	;[lastX, lastY] = [e.offsetX, e.offsetY]
 })
 canvas.addEventListener('mouseup', stopDraw)
-// canvas.addEventListener('mouseout', stopDraw)
+canvas.addEventListener('mouseout', stopDraw)
