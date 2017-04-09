@@ -15,7 +15,7 @@ Projects:
 ✅ Day 8	- Fun with HTML5 Canvas
 ✅ Day 9	- 14 Must Know Dev Tools Tricks
 ✅ Day 10	- Hold Shift to Check Multiple Checkboxes
-[] Day 11	- Custom HTML5 Video Player
+✅ Day 11	- Custom HTML5 Video Player
 [] Day 12	- Key Sequence Detection (KONAMI CODE)
 [] Day 13	- Slide In on Scroll
 [] Day 14	- Object and Arrays - Reference VS Copy
