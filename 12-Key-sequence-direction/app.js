@@ -1,8 +1,8 @@
 "use strict"
 let sequence = [	
 	'ArrowUp',
-	'ArrowDown',
 	'ArrowUp',
+	'ArrowDown',
 	'ArrowDown',
 	'ArrowLeft',
 	'ArrowRight',
