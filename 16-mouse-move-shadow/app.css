@@ -1,0 +1,19 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+.hero {
+	display: flex;
+	vertical-align: middle;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	color: black;
+	background: lightblue;
+}
+
+h1 {
+	font-family: sans-serif;
+	font-size: 100px;
+	text-shadow: 10px 10px rgba(0,0,0,0.5);
+}
