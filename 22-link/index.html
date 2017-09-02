@@ -34,9 +34,13 @@
 	document.body.append(highlight)
 
 	function handleMove() {
+		// as we're adding this function to each eleemnt we do not need to perform any validation
 		// const { nodeName } = e.target
 		// if (nodeName.toLowerCase() !== 'a') return
 		const { top, left, width, height } = this.getBoundingClientRect()
+		// getBoundingClientRect return position relative to the screen not the page
+		// so as user scrolls down this value will become inaccurate
+		// we need to get the scroll positon and add to the rect value to get this new position
 		const { scrollX, scrollY } = window
 		highlight.setAttribute('style', `
 			width: ${width}px;
@@ -45,7 +49,9 @@
 		`)
 	}
 	// document.body.addEventListener('mousemove', handleMove)
-	triggers.forEach(trigger => trigger.addEventListener('mousemove', handleMove))
+	// we can also add event listener to each element
+	// this means we can also use mouseenter to control the number of events fired
+	triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleMove))
 
 	</script>
 </body>
