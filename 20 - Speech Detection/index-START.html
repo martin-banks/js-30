@@ -10,8 +10,34 @@
   </div>
 
 <script>
+  // in case browser uses webkit verison of api then get it and assign to non-webkit method
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+  // now we know where speech recognition exists we can create a new instance of it
+  const recog = new SpeechRecognition()
+  // set interim results as true will allow us to update from speech input on the fly and NOT wait for the user to stop speaking
+  recog.interimResults = true
+  // console.log(recog)
+  // now for our dom stuff...
+  // create and add an empty p to our words wrapper
+  let p = document.createElement('p')
+  const words = document.querySelector('.words')
+  words.appendChild(p)
+
+  recog.addEventListener('result', e => {
+    const transcript = Array.from(e.results)
+      .map(result => result[0])
+      .map(result => result.transcript)
+      .join('')
+    p.textContent = transcript
+    if(e.results[0].isFinal) {
+      p = document.createElement('p')
+      words.appendChild(p)  
+    }
+
+  })
+  recog.addEventListener('end', recog.start)
+  recog.start()
 
 </script>
 
