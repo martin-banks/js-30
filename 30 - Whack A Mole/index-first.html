@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whack A Mole!</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Whack-a-mole! <span class="score">0</span></h1>
+  <button class="startGame">Start!</button>
+
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
+
+<script>
+  const holes = document.querySelectorAll('.hole')
+  const scoreBoard = document.querySelector('.score')
+  const moles = document.querySelectorAll('.mole')
+  const startButton = document.querySelector('button.startGame')
+  const length = 1000
+  let rounds = 0
+  let mole = null
+  let score = 0
+  let chosenMole = null
+
+  function round (mole) {
+    return {
+      show: () => mole.style.transform = 'translate(0, -100%)',
+      hide: () => mole.style.transform = '',
+    }
+  }
+  const rng = () => Math.floor(Math.random() * (moles.length - 1))
+
+  function moleClicked () {
+    mole.hide()
+    score++
+    scoreBoard.innerText = score
+    this.removeEventListener('click', moleClicked)
+  }
+
+  function startGame () {
+    this.style.display = 'none'
+    const gameLoop = setInterval(() => {
+      if (mole) mole.hide()
+      if (rounds > 10) {
+        clearInterval(gameLoop)
+        this.style.dispaly = 'block'
+        return
+      }
+      rounds ++
+      chosenMole = moles[rng()]
+      chosenMole.addEventListener('click', moleClicked)
+      mole = round(chosenMole)
+      mole.show()
+    }, length)
+  }
+
+  startButton.addEventListener('click', startGame)
+
+
+</script>
+</body>
+</html>

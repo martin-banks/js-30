@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whack A Mole!</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Whack-a-mole! <span class="score">0</span></h1>
+  <button class="startGame">Start!</button>
+
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
+
+<script>
+  const holes = document.querySelectorAll('.hole')
+  const scoreBoard = document.querySelector('.score')
+  const moles = document.querySelectorAll('.mole')
+  const startButton = document.querySelector('button.startGame')
+  // const length = 1000
+  let rounds = 0
+  let mole = null
+  let score = 0
+  let chosenMole = null
+  let gameLoop = null
+  let startTime = null
+  let gameTimer = null
+  const randomTime = () => Math.floor(Math.random() * 300) + 300
+
+  function round (mole) {
+    return {
+      show: () => mole.style.transform = 'translate(0, -100%)',
+      hide: () => mole.style.transform = '',
+    }
+  }
+  const randomMole = () => moles[Math.floor(Math.random() * (moles.length - 1))]
+
+  function gameRound () {
+    if (mole) mole.hide()
+    rounds ++
+    chosenMole = randomMole()
+    chosenMole.addEventListener('click', moleClicked)
+    mole = round(chosenMole)
+    mole.show()
+  }
+
+  function nextRound () {
+    clearInterval(gameLoop)
+    gameLoop = setInterval(gameRound, randomTime)
+  }
+
+  function moleClicked () {
+    mole.hide()
+    score++
+    scoreBoard.innerText = score
+    this.removeEventListener('click', moleClicked)
+  }
+
+  function endGame () {
+    clearInterval(gameLoop)
+    clearInterval(gameTimer)
+    startButton.style.display = 'block'
+  }
+
+  function startGame () {
+    rounds = 0
+    mole = null
+    score = 0
+    chosenMole = null
+    startTime = null
+
+    startButton.style.display = 'none'
+    startTime = new Date()
+    console.log({ startTime })
+    gameLoop = setInterval(gameRound, randomTime())
+    gameTimer = setInterval(() => {
+      const now = new Date().getTime()
+      console.log('game running', now)
+      if ((now - startTime) >= (10 * 1000)) {
+        endGame()
+        return
+      }
+    }, 100)
+  }
+
+  startButton.addEventListener('click', startGame)
+
+
+</script>
+</body>
+</html>
